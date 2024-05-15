@@ -106,14 +106,31 @@ function goToPage() {
 }
 
 function saveFile() {
-    const fileName = document.getElementById('fileInput').files[0].name; // Obtener el nombre del archivo cargado
+    const fileInput = document.getElementById('fileInput');
+    const fileName = fileInput.files[0].name; // Obtener el nombre del archivo cargado
+    const lastDotIndex = fileName.lastIndexOf('.');
+    let fileExtension = '';
+    let typeFile = 'application/octet-stream';
+    if (lastDotIndex !== -1) {
+      fileExtension = fileName.substring(lastDotIndex); // Obtener la extensión del archivo
+    }
+  
+    let fileNameWithoutExtension = fileName;
+    if (fileExtension.toLowerCase() === '.xml') {
+        typeFile = 'text/xml';
+        fileNameWithoutExtension = fileName.substring(0, lastDotIndex); // Eliminar la extensión .xml
+    }
+  
     let xmlString = '<?xml version="1.0" encoding="UTF-8"?>\n';
     xmlString += principalNode.outerHTML; // Agregar el nodo principal y su contenido
-    const blob = new Blob([xmlString], { type: 'text/xml' });
+    const blob = new Blob([xmlString], { type:  typeFile});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = fileName; // Usar el nombre original del archivo
+  
+    // Establecer el nombre de descarga según la extensión del archivo original
+    a.download = fileNameWithoutExtension + fileExtension;
+  
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
