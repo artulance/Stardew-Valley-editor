@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edita tus partidas de Stardew Valley: Editor de archivos de guardado</title>
+<meta name="description"
+    content="¡Toma el control de tu experiencia en Stardew Valley! Edita tu archivo de guardado para modificar dinero, objetos, relaciones y más. Personaliza tu granja y vive la aventura como tú quieras. Compatible con PC.">
+<meta name="keywords"
+    content="stardew valley, editor de archivos de guardado, modificar partidas, trucos, personalización, pc">
+</head>
+<link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+
+<input type="file" id="fileInput" style="display: none;">
+<button onclick="loadFile()">Cargar fichero XML</button>
+<button id="saveBtn" style="display: none;" onclick="saveFile()">Guardar</button>
+
+<table id="xmlTable">
+  <!-- Table content will be added dynamically -->
+</table>
+<script src="./scripts/editor.js"></script>
+
+</body>
+</html>
