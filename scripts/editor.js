@@ -104,3 +104,17 @@ function goToPage() {
     currentPage = pageNumber;
     displayPage(currentPage);
 }
+
+function saveFile() {
+    const fileName = document.getElementById('fileInput').files[0].name; // Obtener el nombre del archivo cargado
+    let xmlString = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    xmlString += principalNode.outerHTML; // Agregar el nodo principal y su contenido
+    const blob = new Blob([xmlString], { type: 'text/xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName; // Usar el nombre original del archivo
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
