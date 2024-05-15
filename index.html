@@ -13,13 +13,19 @@
 </head>
 <body>
 
-<input type="file" id="fileInput" style="display: none;">
-<button onclick="loadFile()">Cargar fichero XML</button>
-<button id="saveBtn" style="display: none;" onclick="saveFile()">Guardar</button>
-
-<table id="xmlTable">
-  <!-- Table content will be added dynamically -->
-</table>
+    <input type="file" id="fileInput" style="display: none;">
+    <button onclick="loadFile()">Cargar fichero XML</button>
+    <button id="saveBtn" style="display: none;" onclick="saveFile()">Guardar</button>
+    
+    <table id="xmlTable">
+      <!-- Table content will be added dynamically -->
+    </table>
+    
+    <div id="pagination">
+      <button id="prevBtn" disabled onclick="prevPage()">Anterior</button>
+      <span>Página <span id="currentPage">1</span></span>
+      <button id="nextBtn" disabled onclick="nextPage()">Siguiente</button>
+    </div>
 <script src="./scripts/editor.js"></script>
 
 </body>
