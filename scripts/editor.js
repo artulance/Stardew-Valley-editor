@@ -43,6 +43,7 @@ function displayPage(pageNumber) {
   table.innerHTML = rows.join('');
 
   document.getElementById('currentPage').textContent = pageNumber;
+  document.getElementById('totalPages').textContent = Math.ceil(principalNode.childNodes.length / pageSize);
   updatePaginationButtons();
 }
 
@@ -90,4 +91,16 @@ function nextPage() {
 function prevPage() {
   currentPage--;
   displayPage(currentPage);
+}
+
+function goToPage() {
+    const pageInput = document.getElementById('pageInput');
+    let pageNumber = parseInt(pageInput.value);
+    if (pageNumber < 1) {
+      pageNumber = 1;
+    } else if (pageNumber > Math.ceil(principalNode.childNodes.length / pageSize)) {
+      pageNumber = Math.ceil(principalNode.childNodes.length / pageSize);
+    }
+    currentPage = pageNumber;
+    displayPage(currentPage);
 }

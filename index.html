@@ -23,8 +23,10 @@
     
     <div id="pagination">
       <button id="prevBtn" disabled onclick="prevPage()">Anterior</button>
-      <span>Página <span id="currentPage">1</span></span>
+      <span>Página <span id="currentPage">1</span> de <span id="totalPages">1</span></span>
       <button id="nextBtn" disabled onclick="nextPage()">Siguiente</button>
+      Ir a página: <input type="number" id="pageInput" min="1" value="1">
+      <button onclick="goToPage()">Ir</button>
     </div>
 <script src="./scripts/editor.js"></script>
 
